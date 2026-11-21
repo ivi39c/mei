@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title> 小梅的近期可約時段｜閒人出租</title>
+  <title>小梅的近期可約時段｜日常陪伴・生活協助</title>
   <style>
     :root {
       --bg: #f7f5f0;
@@ -29,9 +29,8 @@
       font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.6;
-      /* 預留底部浮動按鈕空間 */
-      padding: 12px 12px 92px;
+      line-height: 1.55;
+      padding: 10px 10px 88px;
     }
 
     .container {
@@ -44,22 +43,21 @@
     .header {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px 16px;
-      margin-bottom: 12px;
+      border-radius: 14px;
+      padding: 14px 14px;
+      margin-bottom: 10px;
       text-align: center;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
     .header h1 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       color: var(--primary-dark);
-      margin-bottom: 4px;
-      letter-spacing: 0.5px;
+      margin-bottom: 2px;
     }
 
     .header p {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: var(--subtext);
     }
 
@@ -67,14 +65,14 @@
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 16px;
-      margin-bottom: 12px;
+      border-radius: 14px;
+      padding: 14px;
+      margin-bottom: 10px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
     .section-title {
-      font-size: 1rem;
+      font-size: 0.98rem;
       font-weight: 700;
       color: var(--primary-dark);
       margin-bottom: 8px;
@@ -83,74 +81,12 @@
       gap: 6px;
     }
 
-    /* 價目表區塊 */
-    .price-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .price-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: var(--highlight);
-      padding: 10px 12px;
-      border-radius: 10px;
-      font-size: 0.92rem;
-    }
-
-    .price-item .name {
-      font-weight: 600;
-      color: var(--text);
-    }
-
-    .price-item .sub {
-      font-size: 0.78rem;
-      color: var(--subtext);
-      display: block;
-    }
-
-    .price-item .cost {
-      font-weight: 700;
-      color: var(--primary-dark);
-      font-size: 0.98rem;
-      white-space: nowrap;
-    }
-
-    .traffic-info {
-      font-size: 0.88rem;
-      color: var(--text);
-      margin-bottom: 12px;
-      padding-top: 10px;
-      border-top: 1px dashed var(--border);
-    }
-
-    .reminder-box {
-      background: var(--accent-bg);
-      border: 1px solid var(--accent-border);
-      border-radius: 12px;
-      padding: 12px;
-      font-size: 0.84rem;
-      color: #5c4932;
-    }
-
-    .reminder-box ul {
-      padding-left: 18px;
-      margin-top: 4px;
-    }
-
-    .reminder-box li {
-      margin-bottom: 3px;
-    }
-
     /* 日曆區塊 */
     .cal-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       gap: 8px;
     }
 
@@ -158,14 +94,14 @@
       display: flex;
       background: #efede8;
       border-radius: 8px;
-      padding: 3px;
+      padding: 2px;
     }
 
     .cal-tab {
       border: none;
       background: transparent;
-      padding: 5px 10px;
-      font-size: 0.8rem;
+      padding: 4px 10px;
+      font-size: 0.78rem;
       border-radius: 6px;
       color: var(--subtext);
       font-weight: 600;
@@ -179,18 +115,18 @@
     }
 
     .cal-tip {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--subtext);
       background: var(--highlight);
-      padding: 8px 10px;
+      padding: 6px 10px;
       border-radius: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .calendar-wrapper {
       position: relative;
       width: 100%;
-      height: 400px;
+      height: 390px;
       overflow: hidden;
       border-radius: 10px;
       border: 1px solid var(--border);
@@ -202,33 +138,85 @@
       border: 0;
     }
 
-    /* 表單區塊（手機優先：16px 防止 iOS 自動縮放） */
-    .form-desc {
-      font-size: 0.85rem;
+    /* 精簡單行價目表 */
+    .price-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .price-pill {
+      background: var(--highlight);
+      border-radius: 10px;
+      padding: 8px 6px;
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .price-pill .p-name {
+      display: block;
+      font-size: 0.78rem;
       color: var(--subtext);
-      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .price-pill .p-val {
+      display: block;
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-top: 2px;
+    }
+
+    .compact-note {
+      font-size: 0.8rem;
+      color: var(--subtext);
+      line-height: 1.5;
+    }
+
+    .compact-note strong {
+      color: var(--text);
+    }
+
+    .reminder-mini {
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      padding: 8px 10px;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: #5c4932;
+      line-height: 1.45;
+    }
+
+    /* 表單區塊（手機優先：16px 防 iOS 自動縮放） */
+    .form-desc {
+      font-size: 0.82rem;
+      color: var(--subtext);
+      margin-bottom: 12px;
     }
 
     .form-group {
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
     .form-group label {
       display: block;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       color: var(--text);
     }
 
     .form-group input,
     .form-group select {
       width: 100%;
-      height: 46px;
+      height: 44px;
       padding: 0 12px;
       border: 1.5px solid #d8d3ca;
       border-radius: 10px;
-      font-size: 16px; /* 防止 iPhone 點擊自動放大 */
+      font-size: 16px;
       font-family: inherit;
       background: #fff;
       color: var(--text);
@@ -242,7 +230,7 @@
 
     .select-wrapper::after {
       content: "▼";
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--subtext);
       position: absolute;
       right: 14px;
@@ -264,31 +252,31 @@
     }
 
     .input-hint {
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       color: var(--primary-dark);
-      margin-top: 4px;
+      margin-top: 3px;
     }
 
     /* 預覽區 */
     .preview-label {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       color: var(--subtext);
-      margin: 16px 0 6px;
+      margin: 14px 0 6px;
     }
 
     .template-box {
       background: #f6f6f4;
       border: 1px dashed #c8c4bc;
       border-radius: 12px;
-      padding: 14px;
-      font-size: 0.92rem;
+      padding: 12px;
+      font-size: 0.9rem;
       white-space: pre-line;
       color: #222;
-      line-height: 1.6;
+      line-height: 1.55;
     }
 
-    /* 手機底部固定浮動條（單手隨時可按複製） */
+    /* 手機底部固定浮動條 */
     .sticky-bar {
       position: fixed;
       bottom: 0;
@@ -317,12 +305,12 @@
     }
 
     .total-display .label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--subtext);
     }
 
     .total-display .amount {
-      font-size: 1.15rem;
+      font-size: 1.12rem;
       font-weight: 800;
       color: var(--primary-dark);
     }
@@ -330,33 +318,31 @@
     .btn-copy {
       flex: 1;
       max-width: 220px;
-      height: 46px;
+      height: 44px;
       background: var(--primary);
       color: #fff;
       border: none;
       border-radius: 12px;
-      font-size: 0.98rem;
+      font-size: 0.95rem;
       font-weight: 700;
       cursor: pointer;
-      transition: transform 0.1s, background 0.2s;
     }
 
     .btn-copy:active {
-      transform: scale(0.98);
       background: var(--primary-dark);
     }
 
-    /* 複製成功提示 Toast */
+    /* 複製提示 Toast */
     .toast {
       position: fixed;
-      top: 20px;
+      top: 18px;
       left: 50%;
       transform: translateX(-50%) translateY(-20px);
       background: #2c2c2c;
       color: #fff;
       padding: 10px 18px;
       border-radius: 24px;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       font-weight: 600;
       opacity: 0;
       pointer-events: none;
@@ -376,52 +362,13 @@
   <div class="toast" id="toastMsg">✅ 已複製！回 LINE 貼上給我就好囉</div>
 
   <div class="container">
-    <!-- 頂部標題 -->
+    <!-- 1. 頂部標題 -->
     <div class="header">
       <h1>🌿 小梅的近期可約時段</h1>
-      <p>日常陪伴・純粹傾聽・生活代勞（09:00–23:00）</p>
+      <p>日常陪伴・純粹傾聽・生活代勞</p>
     </div>
 
-    <!-- 價目表與小提醒 -->
-    <div class="card">
-      <div class="section-title">🌷 陪伴價目表</div>
-      <div class="price-grid">
-        <div class="price-item">
-          <div>
-            <span class="name">實體陪伴</span>
-            <span class="sub">視內容微調</span>
-          </div>
-          <span class="cost">$250 / 小時</span>
-        </div>
-        <div class="price-item">
-          <div>
-            <span class="name">語音陪聊</span>
-          </div>
-          <span class="cost">$200 / 小時</span>
-        </div>
-        <div class="price-item">
-          <div>
-            <span class="name">文字陪聊</span>
-          </div>
-          <span class="cost">$150 / 小時</span>
-        </div>
-      </div>
-
-      <div class="traffic-info">
-        <strong>🛵 關於交通費</strong><br />
-        實體見面需另計車資，依實際距離酌收車資（騎車或搭 Uber 實報實銷）。
-      </div>
-
-      <div class="reminder-box">
-        <strong>💡 小提醒</strong>
-        <ul>
-          <li>過程中的額外花費（如餐費、門票、飲料等）需由委託人負擔，無則免付。</li>
-          <li>本服務純屬健康正向陪伴，謝絕任何色情、暗示或越界行為，請互相尊重唷😊</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Google 日曆區塊（手機優先支援週/月切換） -->
+    <!-- 2. 近期預約日曆（緊接在標題下方） -->
     <div class="card">
       <div class="cal-header">
         <div class="section-title" style="margin-bottom:0;">📅 近期預約狀態</div>
@@ -443,10 +390,35 @@
       </div>
     </div>
 
-    <!-- 互動式預約表單 -->
+    <!-- 3. 精簡單行價目表與小提醒 -->
+    <div class="card">
+      <div class="section-title">🌷 收費方式</div>
+      <div class="price-strip">
+        <div class="price-pill">
+          <span class="p-name">實體陪伴*</span>
+          <span class="p-val">$250/hr</span>
+        </div>
+        <div class="price-pill">
+          <span class="p-name">語音陪聊</span>
+          <span class="p-val">$200/hr</span>
+        </div>
+        <div class="price-pill">
+          <span class="p-name">文字陪聊</span>
+          <span class="p-val">$150/hr</span>
+        </div>
+      </div>
+      <div class="compact-note">
+        <strong>🛵 交通費：</strong>實體見面另計車資，依實際距離酌收（騎車或搭 Uber 實報實銷）；*實體依內容微調。
+      </div>
+      <div class="reminder-mini">
+        <strong>💡 小提醒：</strong>餐費、門票、飲料等額外花費由委託人負擔（無則免付）；純健康正向陪伴，謝絕色情、暗示或越界行為，請互相尊重唷😊
+      </div>
+    </div>
+
+    <!-- 4. 互動式預約表單 -->
     <div class="card">
       <div class="section-title">💬 預約單填寫與試算</div>
-      <p class="form-desc">填寫以下資訊自動試算金額，按下方按鈕就能直接複製回 LINE 傳給我！</p>
+      <p class="form-desc">填寫資訊自動試算金額，按下方按鈕就能複製回 LINE 傳給我！</p>
 
       <div class="form-group">
         <label for="serviceType">選擇陪伴項目</label>
@@ -466,7 +438,8 @@
 
       <div class="form-group">
         <label for="timeInput">2. 委託時間</label>
-        <input type="text" id="timeInput" placeholder="例如：11/25 (三) 14:00 - 16:00" oninput="updatePreview()" />
+        <input type="datetime-local" id="timeInput" onchange="updatePreview()" oninput="updatePreview()" />
+        <div class="input-hint">※ 點擊可開啟內建日期與時間選擇器</div>
       </div>
 
       <div class="form-group">
@@ -504,6 +477,21 @@
 
   <script>
     const BASE_CAL_URL = "https://calendar.google.com/calendar/embed?src=tz85595369193%40gmail.com&ctz=Asia%2FTaipei&showTitle=0&showPrint=0&showCalendars=0&showTabs=0";
+    const WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
+
+    function formatDateTimeLocal(val) {
+      if (!val) return "";
+      const parts = val.split("T");
+      if (parts.length !== 2) return val;
+      const [datePart, timePart] = parts;
+      const [y, m, d] = datePart.split("-").map(Number);
+      if (!y || !m || !d) return val;
+      const dt = new Date(y, m - 1, d);
+      const weekday = WEEKDAYS[dt.getDay()];
+      const mm = String(m).padStart(2, "0");
+      const dd = String(d).padStart(2, "0");
+      return `${mm}/${dd} (${weekday}) ${timePart}`;
+    }
 
     function switchCalMode(mode) {
       const frame = document.getElementById("googleCalFrame");
@@ -548,7 +536,8 @@
       document.getElementById("rateHint").textContent = `※ 目前費率：$${rate} / 小時（支援輸入 0.5 小時）`;
 
       const task = document.getElementById("taskInput").value.trim();
-      const time = document.getElementById("timeInput").value.trim();
+      const rawTime = document.getElementById("timeInput").value;
+      const time = formatDateTimeLocal(rawTime);
       const location = document.getElementById("locationInput").value.trim();
 
       const hoursRaw = document.getElementById("hoursInput").value;
@@ -570,7 +559,6 @@
       const serviceFeeText = serviceFee !== null ? serviceFee : "___";
       const totalText = total !== null ? total : "___";
 
-      // 更新底部浮動總金額
       document.getElementById("stickyTotal").textContent = total !== null ? `$ ${total}` : "$ ___";
 
       const formattedText =
@@ -586,16 +574,15 @@
     function copyTemplate() {
       const text = document.getElementById("bookingTemplate").textContent;
       navigator.clipboard.writeText(text).then(() => {
-        showToast("✅ 已複製！快回到 LINE 聊天室貼上吧～");
+        showToast("✅ 已複製！回 LINE 貼上給我就好囉");
       }).catch(() => {
-        // 相容部分手機內建瀏覽器的備用複製方式
         const textarea = document.createElement("textarea");
         textarea.value = text;
         document.body.appendChild(textarea);
         textarea.select();
         try {
           document.execCommand("copy");
-          showToast("✅ 已複製！快回到 LINE 聊天室貼上吧～");
+          showToast("✅ 已複製！回 LINE 貼上給我就好囉");
         } catch (err) {
           alert("複製失敗，請長按預覽框文字手動複製喔！");
         }
@@ -612,7 +599,6 @@
       }, 2800);
     }
 
-    // 初始化
     handleServiceChange();
   </script>
 </body>
