@@ -373,8 +373,8 @@
       <div class="cal-header">
         <div class="section-title" style="margin-bottom:0;">📅 近期預約狀態</div>
         <div class="cal-tabs">
-          <button type="button" class="cal-tab active" id="tabWeek" onclick="switchCalMode('WEEK')">週檢視</button>
-          <button type="button" class="cal-tab" id="tabMonth" onclick="switchCalMode('MONTH')">月檢視</button>
+          <button type="button" class="cal-tab id="tabWeek" onclick="switchCalMode('WEEK')">週檢視</button>
+          <button type="button" class="cal-tab" active" id="tabMonth" onclick="switchCalMode('MONTH')">月檢視</button>
         </div>
       </div>
       <div class="cal-tip">
@@ -471,7 +471,7 @@
         <span class="label">試算總金額</span>
         <span class="amount" id="stickyTotal">$ 0</span>
       </div>
-      <button type="button" class="btn-copy" onclick="copyTemplate()">📋 一鍵複製預約單</button>
+      <button type="button" class="btn-copy" onclick="copyTemplate()">複製預約單</button>
     </div>
   </div>
 
