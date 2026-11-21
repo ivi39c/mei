@@ -2,89 +2,198 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>小梅的近期可約時段｜日常陪伴・生活協助</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title> 小梅的近期可約時段｜閒人出租</title>
   <style>
     :root {
-      --bg: #faf8f5;
+      --bg: #f7f5f0;
       --card: #ffffff;
-      --primary: #6b8e78;
-      --primary-dark: #52705d;
-      --text: #333333;
+      --primary: #638872;
+      --primary-dark: #4b6b58;
+      --text: #2c2c2c;
       --subtext: #666666;
-      --border: #e6e2dc;
-      --highlight: #f2f6f3;
+      --border: #e5e0d8;
+      --highlight: #eef4f0;
+      --accent-bg: #fdf8f0;
+      --accent-border: #ead7b7;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
       background-color: var(--bg);
       color: var(--text);
       line-height: 1.6;
-      padding: 16px;
+      /* 預留底部浮動按鈕空間 */
+      padding: 12px 12px 92px;
     }
 
     .container {
-      max-width: 760px;
+      width: 100%;
+      max-width: 540px;
       margin: 0 auto;
     }
 
+    /* 頂部標題區 */
     .header {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 20px;
-      margin-bottom: 16px;
+      padding: 18px 16px;
+      margin-bottom: 12px;
       text-align: center;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
     .header h1 {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       color: var(--primary-dark);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      letter-spacing: 0.5px;
     }
 
     .header p {
-      font-size: 0.92rem;
+      font-size: 0.85rem;
       color: var(--subtext);
     }
 
-    .notice-box {
-      background: var(--highlight);
-      border-left: 4px solid var(--primary);
-      border-radius: 10px;
-      padding: 14px 16px;
-      margin-bottom: 16px;
-      font-size: 0.9rem;
-    }
-
-    .notice-box strong {
-      color: var(--primary-dark);
-    }
-
-    .calendar-card {
+    /* 卡片共用樣式 */
+    .card {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 12px;
-      margin-bottom: 16px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      padding: 16px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
     }
 
-    /* 手機自適應日曆容器 */
+    .section-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* 價目表區塊 */
+    .price-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .price-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--highlight);
+      padding: 10px 12px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+    }
+
+    .price-item .name {
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .price-item .sub {
+      font-size: 0.78rem;
+      color: var(--subtext);
+      display: block;
+    }
+
+    .price-item .cost {
+      font-weight: 700;
+      color: var(--primary-dark);
+      font-size: 0.98rem;
+      white-space: nowrap;
+    }
+
+    .traffic-info {
+      font-size: 0.88rem;
+      color: var(--text);
+      margin-bottom: 12px;
+      padding-top: 10px;
+      border-top: 1px dashed var(--border);
+    }
+
+    .reminder-box {
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-border);
+      border-radius: 12px;
+      padding: 12px;
+      font-size: 0.84rem;
+      color: #5c4932;
+    }
+
+    .reminder-box ul {
+      padding-left: 18px;
+      margin-top: 4px;
+    }
+
+    .reminder-box li {
+      margin-bottom: 3px;
+    }
+
+    /* 日曆區塊 */
+    .cal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      gap: 8px;
+    }
+
+    .cal-tabs {
+      display: flex;
+      background: #efede8;
+      border-radius: 8px;
+      padding: 3px;
+    }
+
+    .cal-tab {
+      border: none;
+      background: transparent;
+      padding: 5px 10px;
+      font-size: 0.8rem;
+      border-radius: 6px;
+      color: var(--subtext);
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .cal-tab.active {
+      background: #ffffff;
+      color: var(--primary-dark);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .cal-tip {
+      font-size: 0.82rem;
+      color: var(--subtext);
+      background: var(--highlight);
+      padding: 8px 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
     .calendar-wrapper {
       position: relative;
       width: 100%;
-      height: 540px;
+      height: 400px;
       overflow: hidden;
       border-radius: 10px;
+      border: 1px solid var(--border);
     }
 
     .calendar-wrapper iframe {
@@ -93,123 +202,418 @@
       border: 0;
     }
 
-    .booking-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    /* 表單區塊（手機優先：16px 防止 iOS 自動縮放） */
+    .form-desc {
+      font-size: 0.85rem;
+      color: var(--subtext);
+      margin-bottom: 14px;
     }
 
-    .booking-card h2 {
-      font-size: 1.1rem;
-      margin-bottom: 8px;
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 6px;
       color: var(--text);
     }
 
-    .booking-card p {
-      font-size: 0.9rem;
+    .form-group input,
+    .form-group select {
+      width: 100%;
+      height: 46px;
+      padding: 0 12px;
+      border: 1.5px solid #d8d3ca;
+      border-radius: 10px;
+      font-size: 16px; /* 防止 iPhone 點擊自動放大 */
+      font-family: inherit;
+      background: #fff;
+      color: var(--text);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .select-wrapper {
+      position: relative;
+    }
+
+    .select-wrapper::after {
+      content: "▼";
+      font-size: 0.75rem;
       color: var(--subtext);
-      margin-bottom: 12px;
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: #fcfdfb;
+    }
+
+    .form-group input:disabled {
+      background: #f0efec;
+      color: #888;
+    }
+
+    .input-hint {
+      font-size: 0.8rem;
+      color: var(--primary-dark);
+      margin-top: 4px;
+    }
+
+    /* 預覽區 */
+    .preview-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--subtext);
+      margin: 16px 0 6px;
     }
 
     .template-box {
-      background: #f7f7f7;
-      border: 1px dashed #cccccc;
-      border-radius: 10px;
+      background: #f6f6f4;
+      border: 1px dashed #c8c4bc;
+      border-radius: 12px;
       padding: 14px;
       font-size: 0.92rem;
       white-space: pre-line;
-      margin-bottom: 12px;
       color: #222;
+      line-height: 1.6;
+    }
+
+    /* 手機底部固定浮動條（單手隨時可按複製） */
+    .sticky-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid var(--border);
+      padding: 10px 14px;
+      z-index: 999;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .sticky-inner {
+      max-width: 540px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .total-display {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .total-display .label {
+      font-size: 0.75rem;
+      color: var(--subtext);
+    }
+
+    .total-display .amount {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--primary-dark);
     }
 
     .btn-copy {
-      display: block;
-      width: 100%;
+      flex: 1;
+      max-width: 220px;
+      height: 46px;
       background: var(--primary);
       color: #fff;
       border: none;
-      border-radius: 10px;
-      padding: 12px;
-      font-size: 1rem;
-      font-weight: 600;
+      border-radius: 12px;
+      font-size: 0.98rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: transform 0.1s, background 0.2s;
     }
 
-    .btn-copy:hover {
+    .btn-copy:active {
+      transform: scale(0.98);
       background: var(--primary-dark);
     }
 
-    .copy-msg {
-      text-align: center;
-      font-size: 0.85rem;
-      color: var(--primary-dark);
-      margin-top: 8px;
-      height: 20px;
+    /* 複製成功提示 Toast */
+    .toast {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-20px);
+      background: #2c2c2c;
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 24px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.25s ease;
+      z-index: 1000;
+      white-space: nowrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
     }
 
-    @media (max-width: 480px) {
-      .calendar-wrapper {
-        height: 460px;
-      }
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
     }
   </style>
 </head>
 <body>
+  <div class="toast" id="toastMsg">✅ 已複製！回 LINE 貼上給我就好囉</div>
+
   <div class="container">
     <!-- 頂部標題 -->
     <div class="header">
       <h1>🌿 小梅的近期可約時段</h1>
-      <p>日常陪伴・純粹傾聽・生活代勞（回應時間 09:00–23:00）</p>
+      <p>日常陪伴・純粹傾聽・生活代勞（09:00–23:00）</p>
     </div>
 
-    <!-- 檢視說明 -->
-    <div class="notice-box">
-      <strong>📌 怎麼看空檔？</strong><br />
-      日曆上顯示「忙碌／已預約」代表該時段已有安排，其餘空白時段皆可詢問。<br />
-      ※ 純屬健康正向陪伴，謝絕越界要求及高風險代勞（如代領包裹、簽名、保證人）。
+    <!-- 價目表與小提醒 -->
+    <div class="card">
+      <div class="section-title">🌷 陪伴價目表</div>
+      <div class="price-grid">
+        <div class="price-item">
+          <div>
+            <span class="name">實體陪伴</span>
+            <span class="sub">視內容微調</span>
+          </div>
+          <span class="cost">$250 / 小時</span>
+        </div>
+        <div class="price-item">
+          <div>
+            <span class="name">語音陪聊</span>
+          </div>
+          <span class="cost">$200 / 小時</span>
+        </div>
+        <div class="price-item">
+          <div>
+            <span class="name">文字陪聊</span>
+          </div>
+          <span class="cost">$150 / 小時</span>
+        </div>
+      </div>
+
+      <div class="traffic-info">
+        <strong>🛵 關於交通費</strong><br />
+        實體見面需另計車資，依實際距離酌收車資（騎車或搭 Uber 實報實銷）。
+      </div>
+
+      <div class="reminder-box">
+        <strong>💡 小提醒</strong>
+        <ul>
+          <li>過程中的額外花費（如餐費、門票、飲料等）需由委託人負擔，無則免付。</li>
+          <li>本服務純屬健康正向陪伴，謝絕任何色情、暗示或越界行為，請互相尊重唷😊</li>
+        </ul>
+      </div>
     </div>
 
-    <!-- Google 日曆嵌入區塊 -->
-    <div class="calendar-card">
+    <!-- Google 日曆區塊（手機優先支援週/月切換） -->
+    <div class="card">
+      <div class="cal-header">
+        <div class="section-title" style="margin-bottom:0;">📅 近期預約狀態</div>
+        <div class="cal-tabs">
+          <button type="button" class="cal-tab active" id="tabWeek" onclick="switchCalMode('WEEK')">週檢視</button>
+          <button type="button" class="cal-tab" id="tabMonth" onclick="switchCalMode('MONTH')">月檢視</button>
+        </div>
+      </div>
+      <div class="cal-tip">
+        顯示「忙碌」代表已有安排，其餘空白時段皆可詢問。
+      </div>
       <div class="calendar-wrapper">
         <iframe
-          src="https://calendar.google.com/calendar/embed?src=tz85595369193%40gmail.com&ctz=Asia%2FTaipei&showTitle=0&showPrint=0&showCalendars=0"
+          id="googleCalFrame"
+          src="https://calendar.google.com/calendar/embed?src=tz85595369193%40gmail.com&ctz=Asia%2FTaipei&mode=WEEK&showTitle=0&showPrint=0&showCalendars=0&showTabs=0"
           frameborder="0"
           scrolling="no">
         </iframe>
       </div>
     </div>
 
-    <!-- 一鍵複製預約格式 -->
-    <div class="booking-card">
-      <h2>💬 看好時間了嗎？複製格式回 LINE 密我！</h2>
-      <p>點下方按鈕複製格式，回到 LINE 貼上並填寫後傳給我就好囉：</p>
-      <div class="template-box" id="bookingTemplate">哈囉小梅！我想詢問預約：
-・想約日期／時段：
-・想做的事（聊聊／吃飯／看診／雜事代勞）：
-・大概地點（或線上）：
-・是否為急單：</div>
-      <button class="btn-copy" onclick="copyTemplate()">📋 一鍵複製預約格式</button>
-      <div class="copy-msg" id="copyMsg"></div>
+    <!-- 互動式預約表單 -->
+    <div class="card">
+      <div class="section-title">💬 預約單填寫與試算</div>
+      <p class="form-desc">填寫以下資訊自動試算金額，按下方按鈕就能直接複製回 LINE 傳給我！</p>
+
+      <div class="form-group">
+        <label for="serviceType">選擇陪伴項目</label>
+        <div class="select-wrapper">
+          <select id="serviceType" onchange="handleServiceChange()">
+            <option value="實體陪伴" data-rate="250" data-onsite="true">實體陪伴（$250 / 小時）</option>
+            <option value="語音陪聊" data-rate="200" data-onsite="false">語音陪聊（$200 / 小時）</option>
+            <option value="文字陪聊" data-rate="150" data-onsite="false">文字陪聊（$150 / 小時）</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="taskInput">1. 委託任務</label>
+        <input type="text" id="taskInput" placeholder="例如：陪吃飯、逛街、純聊天、看診" oninput="updatePreview()" />
+      </div>
+
+      <div class="form-group">
+        <label for="timeInput">2. 委託時間</label>
+        <input type="text" id="timeInput" placeholder="例如：11/25 (三) 14:00 - 16:00" oninput="updatePreview()" />
+      </div>
+
+      <div class="form-group">
+        <label for="locationInput">3. 委託地點</label>
+        <input type="text" id="locationInput" placeholder="例如：台中西區某咖啡廳" oninput="updatePreview()" />
+      </div>
+
+      <div class="form-group">
+        <label for="hoursInput">陪伴時數（小時）</label>
+        <input type="number" inputmode="decimal" id="hoursInput" min="0" step="0.5" placeholder="例如：2" oninput="updatePreview()" />
+        <div class="input-hint" id="rateHint"></div>
+      </div>
+
+      <div class="form-group" style="margin-bottom: 0;">
+        <label for="fareInput">預估車資（元）</label>
+        <input type="number" inputmode="numeric" id="fareInput" min="0" step="10" placeholder="實體見面預估車資（可填 0）" oninput="updatePreview()" />
+        <div class="input-hint" id="fareHint"></div>
+      </div>
+
+      <div class="preview-label">📋 預約單預覽：</div>
+      <div class="template-box" id="bookingTemplate"></div>
+    </div>
+  </div>
+
+  <!-- 手機底部固定浮動複製列 -->
+  <div class="sticky-bar">
+    <div class="sticky-inner">
+      <div class="total-display">
+        <span class="label">試算總金額</span>
+        <span class="amount" id="stickyTotal">$ 0</span>
+      </div>
+      <button type="button" class="btn-copy" onclick="copyTemplate()">📋 一鍵複製預約單</button>
     </div>
   </div>
 
   <script>
+    const BASE_CAL_URL = "https://calendar.google.com/calendar/embed?src=tz85595369193%40gmail.com&ctz=Asia%2FTaipei&showTitle=0&showPrint=0&showCalendars=0&showTabs=0";
+
+    function switchCalMode(mode) {
+      const frame = document.getElementById("googleCalFrame");
+      frame.src = `${BASE_CAL_URL}&mode=${mode}`;
+
+      document.getElementById("tabWeek").classList.toggle("active", mode === "WEEK");
+      document.getElementById("tabMonth").classList.toggle("active", mode === "MONTH");
+    }
+
+    function handleServiceChange() {
+      const select = document.getElementById("serviceType");
+      const selectedOption = select.options[select.selectedIndex];
+      const isOnsite = selectedOption.getAttribute("data-onsite") === "true";
+      const fareInput = document.getElementById("fareInput");
+      const fareHint = document.getElementById("fareHint");
+      const locationInput = document.getElementById("locationInput");
+
+      if (!isOnsite) {
+        fareInput.value = 0;
+        fareInput.disabled = true;
+        fareHint.textContent = "※ 線上陪聊免收車資";
+        locationInput.placeholder = "例如：LINE 語音／文字聊天";
+      } else {
+        fareInput.disabled = false;
+        if (fareInput.value === "0") {
+          fareInput.value = "";
+        }
+        fareHint.textContent = "※ 騎車或搭 Uber 實報實銷，不確定可先填 0";
+        locationInput.placeholder = "例如：台中西區某咖啡廳";
+      }
+
+      updatePreview();
+    }
+
+    function updatePreview() {
+      const select = document.getElementById("serviceType");
+      const selectedOption = select.options[select.selectedIndex];
+      const serviceName = selectedOption.value;
+      const rate = parseInt(selectedOption.getAttribute("data-rate"), 10);
+      const isOnsite = selectedOption.getAttribute("data-onsite") === "true";
+
+      document.getElementById("rateHint").textContent = `※ 目前費率：$${rate} / 小時（支援輸入 0.5 小時）`;
+
+      const task = document.getElementById("taskInput").value.trim();
+      const time = document.getElementById("timeInput").value.trim();
+      const location = document.getElementById("locationInput").value.trim();
+
+      const hoursRaw = document.getElementById("hoursInput").value;
+      const fareRaw = document.getElementById("fareInput").value;
+
+      const hours = hoursRaw !== "" ? parseFloat(hoursRaw) : null;
+      const fare = !isOnsite ? 0 : (fareRaw !== "" ? parseFloat(fareRaw) : null);
+
+      const serviceFee = hours !== null && !isNaN(hours) ? Math.round(hours * rate) : null;
+
+      let total = null;
+      if (serviceFee !== null) {
+        const validFare = fare !== null && !isNaN(fare) ? fare : 0;
+        total = serviceFee + validFare;
+      }
+
+      const fareText = !isOnsite ? "0" : (fare !== null && !isNaN(fare) ? fare : "___");
+      const hoursText = hours !== null && !isNaN(hours) ? hours : "___";
+      const serviceFeeText = serviceFee !== null ? serviceFee : "___";
+      const totalText = total !== null ? total : "___";
+
+      // 更新底部浮動總金額
+      document.getElementById("stickyTotal").textContent = total !== null ? `$ ${total}` : "$ ___";
+
+      const formattedText =
+`1. 委託任務：${task}
+2. 委託時間：${time}
+3. 委託地點：${location}
+4. 費用試算：
+車資 $ ${fareText}，${serviceName} ${hoursText} 小時 $ ${serviceFeeText}，總共 $${totalText}`;
+
+      document.getElementById("bookingTemplate").textContent = formattedText;
+    }
+
     function copyTemplate() {
-      const text = document.getElementById("bookingTemplate").innerText;
+      const text = document.getElementById("bookingTemplate").textContent;
       navigator.clipboard.writeText(text).then(() => {
-        const msg = document.getElementById("copyMsg");
-        msg.textContent = "✅ 已複製！快回到 LINE 聊天室貼上吧～";
-        setTimeout(() => {
-          msg.textContent = "";
-        }, 3000);
+        showToast("✅ 已複製！快回到 LINE 聊天室貼上吧～");
       }).catch(() => {
-        alert("複製失敗，請直接長按上方文字框手動複製喔！");
+        // 相容部分手機內建瀏覽器的備用複製方式
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand("copy");
+          showToast("✅ 已複製！快回到 LINE 聊天室貼上吧～");
+        } catch (err) {
+          alert("複製失敗，請長按預覽框文字手動複製喔！");
+        }
+        document.body.removeChild(textarea);
       });
     }
+
+    function showToast(message) {
+      const toast = document.getElementById("toastMsg");
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => {
+        toast.classList.remove("show");
+      }, 2800);
+    }
+
+    // 初始化
+    handleServiceChange();
   </script>
 </body>
 </html>
