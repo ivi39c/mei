@@ -3,19 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>小梅的近期可約時段｜閒人出租</title>
+  <title>小梅的日常陪伴｜閒人出租</title>
   <style>
     :root {
-      --bg: #f7f5f0;
+      --bg: #f6f5f2;
       --card: #ffffff;
-      --primary: #638872;
-      --primary-dark: #4b6b58;
-      --text: #2c2c2c;
+      --primary: #4f6d5a;
+      --primary-dark: #3a5243;
+      --line-green: #06c755;
+      --line-green-dark: #05a847;
+      --text: #262626;
       --subtext: #666666;
-      --border: #e5e0d8;
-      --highlight: #eef4f0;
-      --accent-bg: #fdf8f0;
-      --accent-border: #ead7b7;
+      --border: #e4e0d8;
+      --highlight: #eff3f0;
+      --accent-bg: #faf7f2;
+      --accent-border: #e6dccb;
     }
 
     * {
@@ -29,8 +31,8 @@
       font-family: -apple-system, BlinkMacSystemFont, "PingFang TC", "Microsoft JhengHei", sans-serif;
       background-color: var(--bg);
       color: var(--text);
-      line-height: 1.55;
-      padding: 10px 10px 88px;
+      line-height: 1.65;
+      padding: 12px 12px 96px;
     }
 
     .container {
@@ -39,26 +41,55 @@
       margin: 0 auto;
     }
 
-    /* 頂部標題區 */
+    /* 1. 頂部品牌與導流提示 */
     .header {
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 14px 14px;
+      padding: 18px 16px;
       margin-bottom: 10px;
       text-align: center;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
     }
 
     .header h1 {
-      font-size: 1.2rem;
+      font-size: 1.35rem;
+      font-weight: 700;
       color: var(--primary-dark);
-      margin-bottom: 2px;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
     }
 
-    .header p {
-      font-size: 0.82rem;
+    .header .subtitle {
+      font-size: 0.84rem;
       color: var(--subtext);
+      margin-bottom: 12px;
+    }
+
+    .line-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f1f9f4;
+      border: 1px solid #cce8d6;
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 0.8rem;
+      color: #245237;
+      text-align: left;
+      gap: 10px;
+    }
+
+    .btn-line-mini {
+      background: var(--line-green);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.78rem;
+      padding: 7px 11px;
+      border-radius: 8px;
+      white-space: nowrap;
+      flex-shrink: 0;
     }
 
     /* 卡片共用樣式 */
@@ -66,9 +97,9 @@
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 14px;
+      padding: 15px;
       margin-bottom: 10px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
     }
 
     .section-title {
@@ -76,12 +107,10 @@
       font-weight: 700;
       color: var(--primary-dark);
       margin-bottom: 8px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      letter-spacing: 0.3px;
     }
 
-    /* 日曆區塊 */
+    /* 2. 日曆區塊（預設月檢視） */
     .cal-header {
       display: flex;
       justify-content: space-between;
@@ -111,7 +140,7 @@
     .cal-tab.active {
       background: #ffffff;
       color: var(--primary-dark);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
     }
 
     .cal-tip {
@@ -121,6 +150,10 @@
       padding: 6px 10px;
       border-radius: 8px;
       margin-bottom: 8px;
+    }
+
+    .cal-tip strong {
+      color: var(--primary-dark);
     }
 
     .calendar-wrapper {
@@ -138,20 +171,20 @@
       border: 0;
     }
 
-    /* 精簡單行價目表 */
+    /* 3. 精簡單行價目表 */
     .price-strip {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 6px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .price-pill {
       background: var(--highlight);
       border-radius: 10px;
-      padding: 8px 6px;
+      padding: 9px 6px;
       text-align: center;
-      line-height: 1.3;
+      line-height: 1.35;
     }
 
     .price-pill .p-name {
@@ -163,8 +196,8 @@
 
     .price-pill .p-val {
       display: block;
-      font-size: 0.88rem;
-      font-weight: 800;
+      font-size: 0.86rem;
+      font-weight: 700;
       color: var(--primary-dark);
       margin-top: 2px;
     }
@@ -172,25 +205,113 @@
     .compact-note {
       font-size: 0.8rem;
       color: var(--subtext);
-      line-height: 1.5;
+      line-height: 1.6;
     }
 
     .compact-note strong {
       color: var(--text);
     }
 
-    .reminder-mini {
-      background: var(--accent-bg);
-      border: 1px solid var(--accent-border);
-      border-radius: 10px;
-      padding: 8px 10px;
-      margin-top: 8px;
-      font-size: 0.78rem;
-      color: #5c4932;
-      line-height: 1.45;
+    /* 4. 折疊式深度內容（關於我、服務靈感、Q&A） */
+    details.faq-item {
+      border-top: 1px solid var(--border);
+      padding: 10px 0;
     }
 
-    /* 表單區塊（手機優先：16px 防 iOS 自動縮放） */
+    details.faq-item:first-of-type {
+      border-top: none;
+      padding-top: 2px;
+    }
+
+    details.faq-item:last-of-type {
+      padding-bottom: 2px;
+    }
+
+    details.faq-item summary {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    details.faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+
+    details.faq-item summary::after {
+      content: "+";
+      font-size: 1rem;
+      color: var(--primary);
+      font-weight: 600;
+      margin-left: 8px;
+    }
+
+    details.faq-item[open] summary::after {
+      content: "−";
+    }
+
+    .faq-content {
+      margin-top: 8px;
+      font-size: 0.83rem;
+      color: var(--subtext);
+      background: #faf9f6;
+      padding: 11px 12px;
+      border-radius: 10px;
+      line-height: 1.65;
+    }
+
+    .faq-content p {
+      margin-bottom: 8px;
+    }
+
+    .faq-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-content ul {
+      padding-left: 18px;
+      margin-bottom: 8px;
+    }
+
+    .faq-content ul:last-child {
+      margin-bottom: 0;
+    }
+
+    .faq-content li {
+      margin-bottom: 4px;
+    }
+
+    .cat-tag {
+      display: inline-block;
+      background: var(--highlight);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin: 6px 0 4px;
+    }
+
+    .cat-tag:first-child {
+      margin-top: 0;
+    }
+
+    .qa-q {
+      font-weight: 700;
+      color: var(--text);
+      margin-top: 8px;
+      margin-bottom: 2px;
+    }
+
+    .qa-q:first-child {
+      margin-top: 0;
+    }
+
+    /* 5. 表單區塊（手機優先：16px 防 iOS 自動縮放） */
     .form-desc {
       font-size: 0.82rem;
       color: var(--subtext);
@@ -229,8 +350,8 @@
     }
 
     .select-wrapper::after {
-      content: "▼";
-      font-size: 0.72rem;
+      content: "▾";
+      font-size: 0.85rem;
       color: var(--subtext);
       position: absolute;
       right: 14px;
@@ -276,16 +397,26 @@
       line-height: 1.55;
     }
 
+    .step-guide {
+      margin-top: 12px;
+      background: var(--accent-bg);
+      border: 1px solid var(--accent-border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.8rem;
+      color: #5c4932;
+    }
+
     /* 手機底部固定浮動條 */
     .sticky-bar {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(8px);
       border-top: 1px solid var(--border);
-      padding: 10px 14px;
+      padding: 10px 12px;
       z-index: 999;
       box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
     }
@@ -296,12 +427,13 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
     }
 
     .total-display {
       display: flex;
       flex-direction: column;
+      min-width: 86px;
     }
 
     .total-display .label {
@@ -310,75 +442,74 @@
     }
 
     .total-display .amount {
-      font-size: 1.12rem;
-      font-weight: 800;
+      font-size: 1.1rem;
+      font-weight: 700;
       color: var(--primary-dark);
     }
 
-    .btn-copy {
+    .btn-group {
+      display: flex;
+      gap: 8px;
       flex: 1;
-      max-width: 220px;
+      justify-content: flex-end;
+    }
+
+    .btn-copy-only {
       height: 44px;
-      background: var(--primary);
+      padding: 0 12px;
+      background: var(--highlight);
+      color: var(--primary-dark);
+      border: 1px solid #c7d9ce;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-line-go {
+      height: 44px;
+      padding: 0 14px;
+      background: var(--line-green);
       color: #fff;
       border: none;
-      border-radius: 12px;
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-    }
-
-    .btn-copy:active {
-      background: var(--primary-dark);
-    }
-
-    /* 複製提示 Toast */
-    .toast {
-      position: fixed;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-20px);
-      background: #2c2c2c;
-      color: #fff;
-      padding: 10px 18px;
-      border-radius: 24px;
-      font-size: 0.88rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
       font-weight: 600;
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.25s ease;
-      z-index: 1000;
+      cursor: pointer;
       white-space: nowrap;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.18);
+      flex: 1;
+      max-width: 195px;
     }
 
-    .toast.show {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
+    .btn-line-go:active {
+      background: var(--line-green-dark);
     }
   </style>
 </head>
 <body>
-  <div class="toast" id="toastMsg">閒人出租｜日常陪伴・純粹傾聽・生活代勞</div>
-
   <div class="container">
-    <!-- 1. 頂部標題 -->
+    <!-- 1. 頂部品牌與服務簡介 -->
     <div class="header">
-      <h1>🌿 小梅的近期可約時段</h1>
-      <p>日常陪伴・純粹傾聽・生活代勞</p>
+      <h1>出租小梅</h1>
+      <p class="subtitle">閒人出租｜日常陪伴・純粹傾聽・生活代勞（回應 09:00–23:00）</p>
+      <div class="line-banner">
+        <span>Threads 陌生訊息易被系統隱藏漏看，預約與詢問請統一加官方 LINE 聯繫。</span>
+        <a href="#" id="topLineBtn" class="btn-line-mini" target="_blank" rel="noopener">加官方 LINE</a>
+      </div>
     </div>
 
-    <!-- 2. 近期預約日曆（緊接在標題下方） -->
+    <!-- 2. 近期預約日曆（預設月檢視） -->
     <div class="card">
       <div class="cal-header">
-        <div class="section-title" style="margin-bottom:0;">📅 近期預約狀態</div>
+        <div class="section-title" style="margin-bottom:0;">近期可約日程</div>
         <div class="cal-tabs">
-          <button type="button" class="cal-tab id="tabWeek" onclick="switchCalMode('WEEK')">週檢視</button>
-          <button type="button" class="cal-tab" active" id="tabMonth" onclick="switchCalMode('MONTH')">月檢視</button>
+          <button type="button" class="cal-tab" id="tabWeek" onclick="switchCalMode('WEEK')">週檢視</button>
+          <button type="button" class="cal-tab active" id="tabMonth" onclick="switchCalMode('MONTH')">月檢視</button>
         </div>
       </div>
       <div class="cal-tip">
-        顯示「忙碌」代表已有安排，其餘空白時段皆可詢問。
+        日曆上有<strong>灰色點點／標記</strong>代表已有委託安排，<strong>空白處皆可預約</strong>。
       </div>
       <div class="calendar-wrapper">
         <iframe
@@ -390,13 +521,13 @@
       </div>
     </div>
 
-    <!-- 3. 精簡單行價目表與小提醒 -->
+    <!-- 3. 精簡單行價目表 -->
     <div class="card">
-      <div class="section-title">🌷 收費方式</div>
+      <div class="section-title">陪伴價目表</div>
       <div class="price-strip">
         <div class="price-pill">
           <span class="p-name">實體陪伴*</span>
-          <span class="p-val">$250/hr</span>
+          <span class="p-val">$300–600/hr</span>
         </div>
         <div class="price-pill">
           <span class="p-name">語音陪聊</span>
@@ -408,23 +539,98 @@
         </div>
       </div>
       <div class="compact-note">
-        <strong>🛵 交通費：</strong>實體見面另計車資，依實際距離酌收（騎車或搭 Uber 實報實銷）；*實體依內容微調。
-      </div>
-      <div class="reminder-mini">
-        <strong>💡 小提醒：</strong>餐費、門票、飲料等額外花費由委託人負擔（無則免付）；純健康正向陪伴，謝絕色情、暗示或越界行為，請互相尊重唷😊
+        <strong>交通費與乘車原則：</strong>實體見面另計車資，依實際距離酌收（大眾運輸、騎車或 Uber 實報實銷）；<strong>為顧及雙方安全，一律不搭乘委託人的私人車輛</strong>。<br />
+        *實體陪伴依行程內容微調報價；過程中若有門票、餐費、飲料等額外花費需由委託人負擔，無則免付。
       </div>
     </div>
 
-    <!-- 4. 互動式預約表單 -->
+    <!-- 4. 完整服務介紹、初衷與常見問題（折疊收納） -->
     <div class="card">
-      <div class="section-title">💬 預約單填寫與試算</div>
-      <p class="form-desc">填寫資訊自動試算金額，按下方按鈕就能複製回 LINE 傳給我！</p>
+      <div class="section-title">關於小梅、服務靈感與 Q&A（點擊展開）</div>
+
+      <details class="faq-item">
+        <summary>關於小梅與開始這項服務的初衷</summary>
+        <div class="faq-content">
+          <p>受到日本「閒人出租」概念的啟發，我也展開了這項單純的陪伴服務。很多時候，我們並非沒有能力獨立完成一件事，只是剛好缺一個不帶壓力、不用欠人情的對象在身邊。</p>
+          <p><strong>為什麼大家會需要陪伴服務？</strong></p>
+          <ul>
+            <li><strong>不想欠下人情債：</strong>小事不好意思麻煩朋友，透過合理的費用交換，關係單純又輕鬆。</li>
+            <li><strong>安心吐露心事：</strong>有些煩惱或秘密不想讓生活圈的人知道，找一個中立、不會外傳的樹洞最自在。</li>
+            <li><strong>提升行動動力：</strong>無論是整理房間、運動或踏出門散心，有人在旁邊陪著，往往更有動力開始。</li>
+          </ul>
+          <p>你可以只出租「安靜待在旁邊的我」，也可以請我幫忙一點生活小事。</p>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>可以委託哪些事情？（服務項目靈感）</summary>
+        <div class="faq-content">
+          <div class="cat-tag">日常作伴・不再孤單</div>
+          <ul>
+            <li>陪吃想試試看的餐廳、喝咖啡、散步、逛街買菜（可幫忙提東西）</li>
+            <li>陪同看展覽、逛動物園、看電影，或體驗單獨不敢去的密室逃脫、鬼屋</li>
+            <li>當你下廚或做甜點時的專屬試吃員</li>
+            <li>陪你重遊充滿回憶的地方，或單純漫無目的地散心</li>
+          </ul>
+
+          <div class="cat-tag">情緒樹洞・溫暖傾聽</div>
+          <ul>
+            <li>想找人聊聊近況、分享故事，或傾訴藏在心裡的秘密</li>
+            <li>陪你度過低潮或情傷，當一個「只給溫暖、不愛說教」的傾聽者</li>
+            <li>在你需要客觀建議時，提供中立的第三方視角</li>
+          </ul>
+
+          <div class="cat-tag">重要時刻・生活小幫手</div>
+          <ul>
+            <li>在你感到緊張不安時陪同（如看診、手術前後協助領藥繳費、看考場、面試前打氣）</li>
+            <li>陪你去拿回留在前任住處的物品，或陪你走過心裡有陰影的路段</li>
+            <li>陪你一起看書、運動、簡單整理收納，讓待辦事項更有動力完成</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>委託注意事項與安全原則</summary>
+        <div class="faq-content">
+          <ul>
+            <li><strong>健康正向原則：</strong>本服務純屬健康正向陪伴，<strong>謝絕任何色情、暗示、肢體越界或違法行為</strong>，請互相尊重。</li>
+            <li><strong>乘車安全規範：</strong>實體陪伴皆約公開場合，交通以大眾運輸、騎車或 Uber 為主，<strong>不搭乘委託人的汽車或機車</strong>。</li>
+            <li><strong>不接高風險與單人打工：</strong>有法律或安全風險的委託恕不承接（例如：代領不明包裹、代簽文件、當保證人、借貸），亦不接純發傳單、舉牌等打工。</li>
+            <li><strong>隱私與照片：</strong>為保護個人隱私，不私下傳送個人照片；日常風格可參考公開貼文。</li>
+            <li><strong>案例分享：</strong>服務結束後可能會將過程寫成匿名文字心得分享，若不希望被記錄請提前告知。</li>
+            <li><strong>回應時間：</strong>每日 09:00–23:00（若未即時回覆代表正在委託或忙碌中，當天一定會回；急單若時間允許也可立即出發）。</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="faq-item">
+        <summary>常見問題 Q&A（付款與訂金、臨時取消、區域）</summary>
+        <div class="faq-content">
+          <div class="qa-q">Q1：付款方式有哪些？需要付訂金嗎？</div>
+          <p>支援<strong>現場現金、銀行轉帳、街口支付</strong>。為保障雙方時間安排，<strong>確認時段與報價後，須先支付訂金才算正式預約成立</strong>；尾款可於見面時現金支付或轉帳結清。</p>
+
+          <div class="qa-q">Q2：臨時有事可以取消或改期嗎？</div>
+          <p>若臨時需要取消或改期請盡早通知；因時段已為您保留，若於<strong>預約前 24 小時內臨時取消，訂金恕不退還（或酌收 $200 保留費）</strong>，感謝體諒。</p>
+
+          <div class="qa-q">Q3：有服務區域限制嗎？</div>
+          <p>以我所在的地區為主，其他縣市原則上不設限，但距離較遠會反映在實際交通費上（報價前會先與您確認車資）。</p>
+
+          <div class="qa-q">Q4：如何正式成立預約？</div>
+          <p>填寫下方預約單並傳送到官方 LINE 後，我會先確認時段、行程報價與預估車資，待您支付訂金後即正式為您保留時間。</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- 5. 互動式預約表單 -->
+    <div class="card">
+      <div class="section-title">預約單填寫與費用試算</div>
+      <p class="form-desc">填寫資訊自動試算基本金額，點下方綠色按鈕會自動複製並跳轉官方 LINE。</p>
 
       <div class="form-group">
         <label for="serviceType">選擇陪伴項目</label>
         <div class="select-wrapper">
           <select id="serviceType" onchange="handleServiceChange()">
-            <option value="實體陪伴" data-rate="250" data-onsite="true">實體陪伴（$250 / 小時）</option>
+            <option value="實體陪伴" data-rate="300" data-onsite="true">實體陪伴（$300–600 / 小時，依行程微調）</option>
             <option value="語音陪聊" data-rate="200" data-onsite="false">語音陪聊（$200 / 小時）</option>
             <option value="文字陪聊" data-rate="150" data-onsite="false">文字陪聊（$150 / 小時）</option>
           </select>
@@ -433,18 +639,18 @@
 
       <div class="form-group">
         <label for="taskInput">1. 委託任務</label>
-        <input type="text" id="taskInput" placeholder="例如：陪吃飯、逛街、純聊天、看診" oninput="updatePreview()" />
+        <input type="text" id="taskInput" placeholder="例如：陪吃飯、逛街、純聊天、陪同看診" oninput="updatePreview()" />
       </div>
 
       <div class="form-group">
         <label for="timeInput">2. 委託時間</label>
         <input type="datetime-local" id="timeInput" onchange="updatePreview()" oninput="updatePreview()" />
-        <div class="input-hint">※ 點擊可開啟內建日期與時間選擇器</div>
+        <div class="input-hint">點擊可開啟內建日期與時間選擇器</div>
       </div>
 
       <div class="form-group">
         <label for="locationInput">3. 委託地點</label>
-        <input type="text" id="locationInput" placeholder="例如：台中西區某咖啡廳" oninput="updatePreview()" />
+        <input type="text" id="locationInput" placeholder="例如：詳細地址、捷運站出口或約定地標" oninput="updatePreview()" />
       </div>
 
       <div class="form-group">
@@ -455,29 +661,45 @@
 
       <div class="form-group" style="margin-bottom: 0;">
         <label for="fareInput">預估車資（元）</label>
-        <input type="number" inputmode="numeric" id="fareInput" min="0" step="10" placeholder="實體見面預估車資（可填 0）" oninput="updatePreview()" />
+        <input type="number" inputmode="numeric" id="fareInput" min="0" step="10" placeholder="實體見面預估車資（不確定可先填 0）" oninput="updatePreview()" />
         <div class="input-hint" id="fareHint"></div>
       </div>
 
-      <div class="preview-label">📋 預約單預覽：</div>
+      <div class="preview-label">預約單預覽：</div>
       <div class="template-box" id="bookingTemplate"></div>
+
+      <div class="step-guide">
+        <strong>預約成立流程：</strong><br />
+        1. 填寫上方資料確認試算 → 2. 點下方<strong>「複製並前往 LINE」</strong>貼上傳送 → 3. 確認報價與車資並<strong>支付訂金</strong>後，預約即正式成立。
+      </div>
     </div>
   </div>
 
-  <!-- 手機底部固定浮動複製列 -->
+  <!-- 手機底部固定浮動列 -->
   <div class="sticky-bar">
     <div class="sticky-inner">
       <div class="total-display">
-        <span class="label">試算總金額</span>
+        <span class="label">試算起跳總額</span>
         <span class="amount" id="stickyTotal">$ 0</span>
       </div>
-      <button type="button" class="btn-copy" onclick="copyTemplate()">複製預約單</button>
+      <div class="btn-group">
+        <button type="button" class="btn-copy-only" id="btnCopyOnly" onclick="copyOnly()">僅複製</button>
+        <button type="button" class="btn-line-go" onclick="copyAndOpenLine()">複製並前往 LINE</button>
+      </div>
     </div>
   </div>
 
   <script>
+    // ====================================================
+    // 【重要設定】請把下方引號內的網址換成你的官方 LINE 連結！
+    // 例如：https://lin.ee/xxxxxxx
+    const LINE_OA_URL = "https://lin.ee/你的官方LINE代碼";
+    // ====================================================
+
     const BASE_CAL_URL = "https://calendar.google.com/calendar/embed?src=tz85595369193%40gmail.com&ctz=Asia%2FTaipei&showTitle=0&showPrint=0&showCalendars=0&showTabs=0";
     const WEEKDAYS = ["日", "一", "二", "三", "四", "五", "六"];
+
+    document.getElementById("topLineBtn").href = LINE_OA_URL;
 
     function formatDateTimeLocal(val) {
       if (!val) return "";
@@ -512,15 +734,15 @@
       if (!isOnsite) {
         fareInput.value = 0;
         fareInput.disabled = true;
-        fareHint.textContent = "※ 線上陪聊免收車資";
+        fareHint.textContent = "線上陪聊免收車資";
         locationInput.placeholder = "例如：LINE 語音／文字聊天";
       } else {
         fareInput.disabled = false;
         if (fareInput.value === "0") {
           fareInput.value = "";
         }
-        fareHint.textContent = "※ 騎車或搭 Uber 實報實銷，不確定可先填 0";
-        locationInput.placeholder = "例如：台中西區某咖啡廳";
+        fareHint.textContent = "大眾運輸、騎車或 Uber 實報實銷（不搭委託人車輛），不確定可先填 0";
+        locationInput.placeholder = "例如：詳細地址、捷運站出口或約定地標";
       }
 
       updatePreview();
@@ -533,7 +755,11 @@
       const rate = parseInt(selectedOption.getAttribute("data-rate"), 10);
       const isOnsite = selectedOption.getAttribute("data-onsite") === "true";
 
-      document.getElementById("rateHint").textContent = `※ 目前費率：$${rate} / 小時（支援輸入 0.5 小時）`;
+      if (isOnsite) {
+        document.getElementById("rateHint").textContent = "先以基本費率 $300 / 小時試算（實際依行程內容於 $300–600 之間微調報價）";
+      } else {
+        document.getElementById("rateHint").textContent = `目前費率：$${rate} / 小時（支援輸入 0.5 小時）`;
+      }
 
       const task = document.getElementById("taskInput").value.trim();
       const rawTime = document.getElementById("timeInput").value;
@@ -571,32 +797,61 @@
       document.getElementById("bookingTemplate").textContent = formattedText;
     }
 
-    function copyTemplate() {
-      const text = document.getElementById("bookingTemplate").textContent;
-      navigator.clipboard.writeText(text).then(() => {
-        showToast("✅ 已複製！回 LINE 貼上給我就好囉");
-      }).catch(() => {
-        const textarea = document.createElement("textarea");
-        textarea.value = text;
-        document.body.appendChild(textarea);
-        textarea.select();
-        try {
-          document.execCommand("copy");
-          showToast("✅ 已複製！回 LINE 貼上給我就好囉");
-        } catch (err) {
-          alert("複製失敗，請長按預覽框文字手動複製喔！");
-        }
-        document.body.removeChild(textarea);
-      });
+    function fallbackCopy(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      let ok = false;
+      try {
+        ok = document.execCommand("copy");
+      } catch (err) {
+        ok = false;
+      }
+      document.body.removeChild(textarea);
+      return ok;
     }
 
-    function showToast(message) {
-      const toast = document.getElementById("toastMsg");
-      toast.textContent = message;
-      toast.classList.add("show");
-      setTimeout(() => {
-        toast.classList.remove("show");
-      }, 2800);
+    function copyOnly() {
+      const text = document.getElementById("bookingTemplate").textContent;
+      const btn = document.getElementById("btnCopyOnly");
+
+      const done = (ok) => {
+        if (ok) {
+          btn.textContent = "已複製";
+          setTimeout(() => {
+            btn.textContent = "僅複製";
+          }, 1800);
+        } else {
+          alert("複製失敗，請長按預覽框文字手動複製。");
+        }
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => done(true)).catch(() => done(fallbackCopy(text)));
+      } else {
+        done(fallbackCopy(text));
+      }
+    }
+
+    function copyAndOpenLine() {
+      const text = document.getElementById("bookingTemplate").textContent;
+
+      const openLine = () => {
+        window.open(LINE_OA_URL, "_blank", "noopener");
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(openLine).catch(() => {
+          fallbackCopy(text);
+          openLine();
+        });
+      } else {
+        fallbackCopy(text);
+        openLine();
+      }
     }
 
     handleServiceChange();
